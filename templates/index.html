@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Extramarital affairs prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1 style="text-align: center">Predict - did the woman have at least one affair?) </h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+            <div class="row">
+                <div class="col">
+
+                    <label for="inputAddress"><b>Rate Marriage:</b> <i>(woman's rating of her marriage)</i></label>
+                    <select name="rate_marriage" id="rate_marriage" class="form-control">
+                        <option value="1">very poor</option>
+                        <option value="2">poor</option>
+                        <option value="3">normal</option>
+                        <option value="4">good</option>
+                        <option value="5">very good</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="inputAddress"><b>Years Married</b> <i>(number of years married)</i></label>
+                    <input type="number" name="yrs_married" id="yrs_married" class="form-control" max="80" min="0"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>Education</b> <i>(level of education)</i></label>
+                    <select name="educ" id="educ" class="form-control">
+                        <option value="9">grade school</option>
+                        <option value="12">school</option>
+                        <option value="14">college</option>
+                        <option value="16">college graduate</option>
+                        <option value="17">graduate school</option>
+                        <option value="20">advance degree</option>
+                    </select>
+                </div>
+                <div class="col">
+
+                    <label for="inputAddress"><b>Religious</b></label>
+                    <select name="religious" id="religious" class="form-control">
+                        <option value="1">Not religious</option>
+                        <option value="4">strongly religious</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>Occupation</b> <i>(woman's occupation))</i></label>
+                   <select name="occupation" id="occupation" class="form-control">
+                        <option value="1">Student</option>
+                        <option value="2">Farming/Semi-skilled</option>
+                        <option value="3">White collar</option>
+                        <option value="4">Teacher/Nurse/Writer/Technician/Skilled</option>
+                        <option value="5">Managerial/Business</option>
+                        <option value="6">Professional with advance degree</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="inputAddress"><b>Husband occupation</b> <i>(husband's occupation)</i></label>
+                     <select name="occupation_husb" id="occupation_husb" class="form-control">
+                        <option value="1">Student</option>
+                        <option value="2">Farming/Semi-skilled</option>
+                        <option value="3">White collar</option>
+                        <option value="4">Teacher/Nurse/Writer/Technician/Skilled</option>
+                        <option value="5">Managerial/Business</option>
+                        <option value="6">Professional with advance degree</option>
+                    </select>
+                </div>
+            </div>
+
+            <br/>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Predict affairs</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if hasValues%}
+
+<hr/>
+
+<div>
+    <div class="alert alert-success" role="alert"><p>Number of affairs could be#  <b>{{prediction}}</b></p></div>
+
+
+</div>
+{% endif %}
+{% endblock %}
+

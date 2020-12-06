@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Extramarital affairs prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{% if prediction %}
+
+<hr/>
+
+<div>
+    <div class="alert alert-success" role="alert"><p>Number of affairs could be#  <b>{{prediction}}</b></p></div>
+
+
+</div>
+{% endif %}
+{% endblock %}
